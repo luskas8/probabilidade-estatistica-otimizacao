@@ -1,0 +1,4 @@
+*.o
+# *.txt
+./trabalho_pesquisa_operacional_II
+.vscode

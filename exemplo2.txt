@@ -1,0 +1,55 @@
+Juarez
+Frankfurt
+19
+s
+Juarez
+New York
+17
+s
+Juarez
+Phoenix
+3
+s
+Juarez
+Yokohama
+21
+s
+Seoul
+Frankfurt
+15
+s
+Seoul
+New York
+21
+s
+Seoul
+Phoenix
+18
+s
+Seoul
+Yokohama
+6
+s
+Tel Aviv
+Frankfurt
+11
+s
+Tel Aviv
+New York
+14
+s
+Tel Aviv
+Phoenix
+15
+s
+Tel Aviv
+Yokohama
+22
+n
+100
+300
+200
+150
+100
+200
+150
