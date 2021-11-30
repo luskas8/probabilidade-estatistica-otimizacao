@@ -86,7 +86,6 @@ bool add_path(
     indexDestino = *cols;
     *cols += 1;
   }
-  // printf("%d %d\n", indexOrigem, indexDestino);
 
   custos[indexOrigem][indexDestino] = custo;
 
@@ -327,39 +326,6 @@ int pegar_maior_valor (
   }
 }
 
-// int pegar_menor_valor2 (
-//   int rows, 
-//   int cols,
-//   int * x,
-//   int * y,
-//   int table[LIST_LIMIT][LIST_LIMIT]
-// ) {
-//   int index = 0, * ordenados, result = 0, max_length = (rows * cols);
-
-//   ordenados = (int *) malloc(sizeof(int) * (rows * cols + 1));
-
-//   for (int i = 0; i < rows; i++) {
-//     for ( int j = 0; j < cols; j++) {
-//       ordenados[index++] = table[i][j];
-//     }
-//   }
-
-//   mergeSort(ordenados, 0, (rows * cols - 1));
-//   result = ordenados[0];
-
-//   for (int i = 0; i < rows; i++) {
-//     for ( int j = 0; j < cols; j++) {
-//       if (table[i][j] == result) {
-//         *x = i;
-//         *y = j;
-
-//         free(ordenados);
-//         return table[i][j];
-//       }
-//     }
-//   }
-// }
-
 void menor_custo (
   int rows,
   int cols,
@@ -462,11 +428,9 @@ bool otimizacao (
       dy[LIST_LIMIT] = { 0 },
       k = 0, k_row = 0, k_col = 0,
       hasEconomy = 0, menor_pos = -1, menor_neg = -1;
-  // printf("entrou\n");
+
   calcular_custos(rows, cols, dx, dy, custos, inicial, economy);
-  // printf("aaa\n");
   calcular_economia(rows, cols, dx, dy, custos, economy);
-  // printf("saiu\n");
 
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {
@@ -476,21 +440,12 @@ bool otimizacao (
 
   if (hasEconomy <= 0) return false;
 
-  // for (int i = 0; i < rows; i++) {
-  //   printf("dx: %d\n", dx[i]);
-  // }
-
-  // for (int i = 0; i < cols; i++) {
-  //   printf("dy: %d\n", dy[i]);
-  // }
-
   k = pegar_maior_valor(rows, cols, &k_row, &k_col, economy);
 
   while (inicial[k_row][k_col] != -1) {
     economy[k_row][k_col] = -1;
     k = pegar_maior_valor(rows, cols, &k_row, &k_col, economy);
   }
-  // printf("%d: %d %d\n", k, k_row, k_col);
 
   listener(rows, cols, k_row, k_col, inicial, usados, &menor_pos, &menor_neg);
   usados[k_row][k_col] = 1;
@@ -501,17 +456,9 @@ bool otimizacao (
         (inicial[i][j] == 0 && !(usados[i][j] == -1 || usados[i][j] == 1))
         || (inicial[i][j] == 1 && !(usados[i][j] == -1 || usados[i][j] == 1))
       ) {
-        printf("quem e: %d %d[%d]\n", i, j, inicial[i][j]);
         inicial[i][j] = -1;
       }
     }
-  }
-
-  printf("%d\n", menor_neg);
-  for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < cols; j++) {
-      printf("%d ", usados[i][j]);
-    } printf("\n");
   }
 
   int sum_pos = 0, sum_neg = 0;
@@ -553,7 +500,6 @@ bool otimizacao (
       }
     }
   }
-  // printf("menor: %d %d\n", x, y);
   inicial[x][y] = -1;
 
   for (int i = 0; i < rows; i++) {
@@ -689,8 +635,6 @@ void listener (
           && inicial[inicial_row][inicial_col] != -1
           && inicial[k_row][inicial_col] != -1
         ) {
-          printf("teste: %d %d->%d\n", inicial_row, inicial_col, inicial[inicial_row][inicial_col]);
-          printf("teste: %d %d->%d\n", k_row, inicial_col, inicial[k_row][inicial_col]);
           usados[inicial_row][inicial_col] = 1;
 
           usados[k_row][inicial_col] = -1;
@@ -835,8 +779,6 @@ void resetar_table(int rows, int cols, int k_row, int k_col, int table[LIST_LIMI
       table[i][j] = 0;
     }
   }
-
-  // table[k_row][k_col] = 1;
 }
 
 void calcular_custos(
@@ -864,23 +806,6 @@ void calcular_custos(
   }
   dx[0] = 0;
 
-  // for (int i = 0; i < rows; i++) {
-  //   printf("dx: %d\n", dx[i]);
-  // }
-
-  // for (int i = 0; i < cols; i++) {
-  //   printf("dy: %d\n", dy[i]);
-  // }
-
-  // for (int i = 0; i < rows; i++) {
-  //   for (int j = 0; j < cols; j++) {
-  //     // if (economy[i][j] != -1) {
-  //       printf("%d ", economy[i][j]);
-  //     // }
-  //   }
-  //   printf("\n");
-  // }
-
   int x = 0, y = 0;
 
   do {
@@ -898,15 +823,6 @@ void calcular_custos(
     } 
   } while (x < rows);
   x = -1;
-
-  //  printf("rotas: %d\n", rotas);
-  // for (int i = 0; i < rows; i++) {
-  //   printf("dx: %d\n", dx[i]);
-  // }
-
-  // for (int i = 0; i < cols; i++) {
-  //   printf("dy: %d\n", dy[i]);
-  // }
 
   while (rows+cols > rotas) {
     for (int i = 0; i < rows; i++) {
@@ -933,17 +849,6 @@ void calcular_custos(
 
     rotas++;
   }
-
-  // printf("%d\n", inicial[x][y]);
-
-  // printf("rotas: %d\n", rotas);
-  // for (int i = 0; i < rows; i++) {
-  //   printf("dx: %d\n", dx[i]);
-  // }
-
-  // for (int i = 0; i < cols; i++) {
-  //   printf("dy: %d\n", dy[i]);
-  // }
 }
 
 void calcular_economia (
@@ -961,16 +866,5 @@ void calcular_economia (
       }
     }
   }
-
-  // for (int i = 0; i < rows; i++) {
-  //   for (int j = 0; j < cols; j++) {
-  //     if (economy[i][j] != -1) {
-  //       printf("%d ", economy[i][j]);
-  //     } else {
-  //       printf("[ 1 ] ");
-  //     }
-  //   }
-  //   printf("\n");
-  // }
 }
 
