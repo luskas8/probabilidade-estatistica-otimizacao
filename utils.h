@@ -9,9 +9,8 @@
  * 
  * Ciências da Computação
  * 
- * 10/OUT/2020
+ * 29/OUT/2020
 */
-
 #ifndef _UTILS_H
 #define _UTILS_H
 #define MAX_LENGTH 25
@@ -39,6 +38,7 @@ bool read_int (int * var);
 
 bool search_name(int * length, char names[][*], char * name, int * result);
 
+/* Função que adiciona nós */
 bool add_path(
   int * rows,
   int * cols,
@@ -47,6 +47,7 @@ bool add_path(
   char destinos[][*]
 );
 
+/* Função que escreve no console a tabela formatando com a devida tabulação */
 void print_table(
   int rows,
   int cols,
@@ -58,6 +59,7 @@ void print_table(
   bool camp_nulo
 );
 
+/* Função que ajusta os nós fictícios e balanceia tabela inicial */
 char ajusta_quadro(
   int * rows,
   int * cols,
@@ -67,6 +69,7 @@ char ajusta_quadro(
   int demandas[]
 );
 
+/* Função que acha a solução inicial pelo canto noroeste */
 void canto_noroeste(
   int rows,
   int cols,
@@ -77,8 +80,10 @@ void canto_noroeste(
   int inicial[][*]
 );
 
+/* Função que soma os elementos da list e devolve esse valor  */
 int valor_total (int max_length, int list[]);
 
+/* Função que acha e devolve o valor e posição do 1° menor elemento duma tabela */
 int pegar_menor_valor (
   int row,
   int col,
@@ -93,9 +98,12 @@ int pegar_menor_valor (
 /**
  * Código dispobível em: https://www.treinaweb.com.br/blog/conheca-os-principais-algoritmos-de-ordenacao
  * Acesso: 11/NOV/2021 às 20:10.
+ * 
+ * Função para ordenar crescentemente um dado vetor
 */
 void mergeSort(int *vetor, int posicaoInicio, int posicaoFim);
 
+/* Função que acha e devolve o valor e posição do 1° maior elemento dema tabela */
 int pegar_maior_valor (
   int rows, 
   int cols,
@@ -104,6 +112,7 @@ int pegar_maior_valor (
   int table[][*]
 );
 
+/* Função que acha a solução inicial pelo método de menor custo */
 void menor_custo (
   int rows,
   int cols,
@@ -116,6 +125,7 @@ void menor_custo (
   char where
 );
 
+/* Função que calcula o custo de transporte para certas rotas */
 void calcular_custos(
   int rows,
   int cols,
@@ -126,6 +136,7 @@ void calcular_custos(
   int economy[][*]
 );
 
+/* Função que calcula a economia para certas rotas */
 void calcular_economia (
   int rows,
   int cols,
@@ -135,8 +146,10 @@ void calcular_economia (
   int economy[][*]
 );
 
+/* Função que faz a otimização da tabela para um K */
 bool otimizacao (int rows, int cols, int * custo_inicial, int custos[][*], int inicial[][*]);
 
+/* Função que acha o melhor caminho para K */
 void listener (
   int rows,
   int cols,
@@ -148,6 +161,7 @@ void listener (
   int * menor_neg
 );
 
+/* Função que coloca os valores de determinada tabela zerados */
 void resetar_table(int rows, int cols, int k_row, int k_col, int table[LIST_LIMIT][LIST_LIMIT]);
 
 #endif

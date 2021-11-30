@@ -9,7 +9,7 @@
  * 
  * Ciências da Computação
  * 
- * 10/OUT/2020
+ * 29/OUT/2020
 */
 
 #include "utils.h"

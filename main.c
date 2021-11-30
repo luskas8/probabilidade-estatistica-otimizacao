@@ -1,3 +1,18 @@
+/* main.c
+ *
+ * Implementação do programa para otimização do
+ * ṕroblema do transporte
+ * 
+ * Artur Freire dos Santos
+ * Gabriel Gonçales
+ * Lucas Silva dos Anjos
+ * Vinicius Freire Pereira
+ * 
+ * Ciências da Computação
+ * 
+ * 29/OUT/2020
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include "utils.h"
